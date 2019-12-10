@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+	
+    <beans:bean id="encoder" 
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </beans:bean>
+    
+    <http auto-config="true">
+        <intercept-url pattern="/manager/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/manager/staff/**" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_STAFF')" />
+        <access-denied-handler error-page="/403" />	
+        <form-login login-page="/login" login-processing-url="/ShopFinal/j_spring_security_login"
+                    default-target-url="/" authentication-failure-url="/login?error"
+                    username-parameter="email" password-parameter="password" />
+		
+        <logout logout-url="/j_spring_security_logout"
+                logout-success-url="/logout" delete-cookies="JSESSIONID" />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder ref="encoder" />
+            <jdbc-user-service data-source-ref="myDataSource"
+                               users-by-username-query="SELECT email,password,role_id,del_flg FROM MUsers WHERE email=?"
+                               authorities-by-username-query="SELECT MUsers.email,MRole.role_name from MUsers, MRole where email =? and MUsers.role_id=MRole.role_id" />
+        
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

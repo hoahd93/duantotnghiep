@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <!-- Base Define -->
+    <definition name="adminlayout" 
+                template="/WEB-INF/views/admin/layout/adminPage.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="/WEB-INF/views/admin/elements/header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/views/admin/elements/admin-menu.jsp" />        
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/views/admin/elements/footer.jsp" />  
+    </definition>  
+         
+         
+    <!--     Admin Home Page -->
+    <definition name="staffHome" extends="adminlayout">  
+        <put-attribute name="title" value="Trang Chủ" />
+        <put-attribute name="namelink" value="TRANG CHỦ" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/index.jsp" />  
+    </definition>
+    
+    <!--     Admin Hồ Sơ Cá Nhân -->
+    <definition name="myPro" extends="adminlayout">  
+        <put-attribute name="title" value="Hồ sơ cá nhân" />
+        <put-attribute name="namelink" value="HỒ SƠ CÁ NHÂN" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/profile.jsp" />  
+    </definition>
+    
+    <!--     Admin Quản Lý Người Dùng -->
+    <definition name="staffManager" extends="adminlayout">  
+        <put-attribute name="title" value="Quản lý nhân viên" />
+        <put-attribute name="namelink" value="NHÂN VIÊN" />   
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/staff.jsp" />  
+    </definition>
+    
+    <!--     Admin Quản Lý Sản Phẩm -->
+    <definition name="product" extends="adminlayout">  
+        <put-attribute name="title" value="Quản lý sản phẩm" /> 
+        <put-attribute name="namelink" value="SẢN PHẨM" />  
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/product/product.jsp" />  
+    </definition>
+    
+    <!--     Admin Quản Lý Sản Phẩm Model -->
+    <definition name="productModel" extends="adminlayout">  
+        <put-attribute name="title" value="Quản lý sản phẩm model" /> 
+        <put-attribute name="namelink" value="SẢN PHẨM" />  
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/product/productModel.jsp" />  
+    </definition>
+    
+    <!--     Admin Danh Mục Sản Phẩm -->
+    <definition name="listCategory" extends="adminlayout">  
+        <put-attribute name="title" value="Quản lý Danh mục" /> 
+        <put-attribute name="namelink" value="DANH MỤC SẢN PHẨM" />  
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/product/category.jsp" />  
+    </definition>
+  
+    <!--     Admin Quản Lý Màu -->
+    <definition name="listColor" extends="adminlayout">  
+        <put-attribute name="title" value="Quản lý màu sắc" /> 
+        <put-attribute name="namelink" value="MÀU SẮC SẢN PHẨM" />  
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/product/color.jsp" />  
+    </definition>
+    <!-- client-->
+    <definition name="listClient" extends="adminlayout">  
+        <put-attribute name="title" value="Quản Lý Client" /> 
+        <put-attribute name="namelink" value="Client" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/client.jsp" />  
+    </definition>
+  
+    <!--     Admin Quản Lý Kích Thước -->
+    <definition name="listSize" extends="adminlayout">  
+        <put-attribute name="title" value="Quản lý kich thước" /> 
+        <put-attribute name="namelink" value="KÍCH THƯỚC SẢN PHẨM" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/product/size.jsp" />  
+    </definition>
+
+    <!--     Admin Quản Lý Thương Hiệu -->
+    <definition name="listTrademark" extends="adminlayout">  
+        <put-attribute name="title" value="Quản lý nhãn hiệu" />
+        <put-attribute name="namelink" value="NHÃN HIỆU SẢN PHẨM" />  
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/product/trademark.jsp" />  
+    </definition>
+    
+    <!--     Thống Kê -->
+    <definition name="revenueByDay" extends="adminlayout">  
+        <put-attribute name="title" value="Thống kê theo ngày" />  
+        <put-attribute name="namelink" value="THỐNG KÊ" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/revenueByDay.jsp" />  
+    </definition>
+    
+    <definition name="revenueByMonth" extends="adminlayout">  
+        <put-attribute name="title" value="Thống kê theo tháng" />  
+        <put-attribute name="namelink" value="THỐNG KÊ" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/revenueByMonth.jsp" />  
+    </definition>
+
+    <!--     Admin Quản Lý Bình Luận & Phản Hồi Của Khách Hàng -->
+    <definition name="listFeedback" extends="adminlayout">  
+        <put-attribute name="title" value="Phản hồi khách hàng" />  
+        <put-attribute name="namelink" value="PHẢN HỒI KHÁCH HÀNG" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/feedback.jsp" />  
+    </definition>
+    
+    <!--     Hóa đơn -->
+    <definition name="order" extends="adminlayout">  
+        <put-attribute name="title" value="Hồ sơ cá nhân" />
+        <put-attribute name="namelink" value="HỒ SƠ CÁ NHÂN" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/page/order/order.jsp" />  
+    </definition>
+</tiles-definitions>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                           http://www.springframework.org/schema/mvc 
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx">
+    <!--    <mvc:default-servlet-handler/>-->
+    <mvc:annotation-driven ></mvc:annotation-driven>
+    <!--    Xử lý các Package....-->
+    <context:component-scan base-package="shop.controller, shop.dao, shop.model, shop.service" />
+    
+    <!--    Cấu hình database-->
+    <bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=db_shop"/>
+        <property name="username" value="sa"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <!--    URL của WEB_INF-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
+        <property name="dataSource" ref="myDataSource"></property>  
+    </bean>
+    <mvc:resources mapping="/upload/**" location="/WEB-INF/resources/upload/" />
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/admin/" />
+    <mvc:resources mapping="/customer/**" location="/WEB-INF/resources/customers/" />
+    
+    <!-- For reading the properties files -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/message" />
+    </bean>
+    
+    <!--    Tiles của project-->
+    <bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list> 				
+                <value>/WEB-INF/tiles-admin.xml</value>
+                <value>/WEB-INF/tiles-customer.xml</value>
+                <value>/WEB-INF/tiles-error.xml</value>
+            </list>
+        </property>
+        <property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SimpleSpringPreparerFactory"></property>
+    </bean>
+  	
+    <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+    </bean>
+    
+    <!--    Kích thước hình khi save trong data-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="100000000000"/>
+    </bean>
+    
+    <!-- Using SMTP -->
+    <bean id="mailSender2" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="username" value="binhdtpd02451@fpt.edu.vn" />
+        <property name="password" value="binhphuong123" />
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.port">587</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+  
+    <bean id="localeChangeInterceptor"  
+          class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">  
+        <property name="paramName" value="lang" />  
+    </bean>  
+ 
+    <bean id="localeResolver"  
+          class="org.springframework.web.servlet.i18n.SessionLocaleResolver">  
+        <property name="defaultLocale" value="vi"/>  
+    </bean>  
+ 
+    <mvc:interceptors>  
+        <bean parent="localeChangeInterceptor"/>  
+    </mvc:interceptors>  
+    
+    <!-- Cấu hình Transaction -->
+    <tx:annotation-driven proxy-target-class="true"
+                          transaction-manager="transactionManager" />
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="myDataSource" />
+    </bean>
+</beans>

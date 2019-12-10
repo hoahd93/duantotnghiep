@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!-- Base Define -->    
+    <definition name="custormerlayout" 
+                template="/WEB-INF/views/customers/layout/customersPage.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="/WEB-INF/views/customers/elements/header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/views/customers/elements/customer-menu.jsp" />        
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/views/customers/elements/footer.jsp" />  
+    </definition>  
+    <!--     Admin Home Page -->
+    <definition name="customerHome" extends="custormerlayout">  
+        <put-attribute name="title" value="Trang Chủ" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/customer.jsp" />  
+    </definition>
+    
+    <!--     My Profile -->
+    <definition name="myProfile" extends="custormerlayout">  
+        <put-attribute name="title" value="Thông Tin Cá Nhân" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/myprofile.jsp" />  
+    </definition>
+    
+    <!--     Admin Home Page -->
+    <definition name="login" extends="custormerlayout">  
+        <put-attribute name="title" value="Đăng nhập" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/login.jsp" />  
+    </definition>
+    
+    <!--     Admin Home Page -->
+    <definition name="user" extends="custormerlayout">  
+        <put-attribute name="title" value="Welcome" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/user.jsp" />  
+    </definition>
+    <!--     Admin Home Page -->
+    <definition name="admin" extends="custormerlayout">  
+        <put-attribute name="title" value="Welcome" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/admin.jsp" />  
+    </definition>
+    
+    <!--        Giới thiệu-->
+    <definition name="introduce" extends="custormerlayout">  
+        <put-attribute name="title" value="Giới thiệu" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/about/introduce.jsp" />         
+    </definition>
+    <!--Liên Hệ-->
+    <definition name="contact" extends="custormerlayout">  
+        <put-attribute name="title" value="Liên hệ" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/about/contact.jsp" />         
+    </definition>
+    
+    <!--Danh mục- Áo-->
+    <definition name="listAo" extends="custormerlayout">  
+        <put-attribute name="title" value="ÁO-FASHION STORE " />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/danhMucAo.jsp" />         
+    </definition>
+    
+    <!--Danh mục- Giày Dép-->
+    <definition name="listGiay" extends="custormerlayout">  
+        <put-attribute name="title" value="GIÀY DÉP-FASHION STORE " />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/danhMucGiayDep.jsp" />         
+    </definition>
+    <!--Danh mục- Nón mũ-->
+    <definition name="listNonMu" extends="custormerlayout">  
+        <put-attribute name="title" value="NÓN-FASHION STORE" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/danhMucNon.jsp" />         
+    </definition>
+    <!--Danh mục- Quần-->
+    <definition name="listQuan" extends="custormerlayout">  
+        <put-attribute name="title" value="QUẦN-FASHION STORE" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/danhMucQuan.jsp" />         
+    </definition>
+    <!--Danh mục- Túi xách-->
+    <definition name="listTuiXach" extends="custormerlayout">  
+        <put-attribute name="title" value="TÚI XÁCH-FASHION STORE" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/danhMucTuiXach.jsp" />         
+    </definition>
+    <!--Danh mục- Sản phẩm mới-->
+    <definition name="listNew" extends="custormerlayout">  
+        <put-attribute name="title" value="SẢN PHẨM MỚI-FASHION STORE" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/sanPhamMoi.jsp" />         
+    </definition>
+    <!--Danh mục- Sản phẩm Chi tiết-->
+    <definition name="sanPhamChiTiet" extends="custormerlayout">  
+        <put-attribute name="title" value="SẢN PHẨM CHI TIẾT" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/sanPhamChiTiet.jsp" />         
+    </definition>
+    <!--     Đăng Ký Customer -->
+    <definition name="registration" extends="custormerlayout">  
+        <put-attribute name="title" value="Đăng Ký Tài Khoản" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/registration.jsp" />  
+    </definition>
+    
+    
+    <!--    Quên mật khẩu   -->
+    <definition name="checkEmail" extends="custormerlayout">  
+        <put-attribute name="title" value="Email" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/Forgotpassword/checkemail.jsp" />         
+    </definition>
+    <definition name="checkToken" extends="custormerlayout">  
+        <put-attribute name="title" value="Email" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/Forgotpassword/checktoken.jsp" />         
+    </definition>
+    <definition name="resetPass" extends="custormerlayout">  
+        <put-attribute name="title" value="Email" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/Forgotpassword/resetpass.jsp" />         
+    </definition>
+    
+    <!--     ListOrder -->
+    <definition name="listOrdersCustomer" extends="custormerlayout">  
+        <put-attribute name="title" value="Đăng Ký Tài Khoản" />
+        <put-attribute name="body" value="/WEB-INF/views/customers/page/Order.jsp" />  
+    </definition>
+</tiles-definitions>
