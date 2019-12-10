@@ -116,7 +116,7 @@ and open the template in the editor.
     
     <!--     ListOrder -->
     <definition name="listOrdersCustomer" extends="custormerlayout">  
-        <put-attribute name="title" value="Đăng Ký Tài Khoản" />
+        <put-attribute name="title" value="Thông tin thanh toán" />
         <put-attribute name="body" value="/WEB-INF/views/customers/page/Order.jsp" />  
     </definition>
 </tiles-definitions>

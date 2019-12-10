@@ -392,7 +392,6 @@
         $("body").on("click", ".btn_edit", function () {
             console.log($(this).closest("tr").find("td.user_id").data("id"));
             $("#modalEdit input[name=user_id]").val($(this).closest("tr").find("td.user_id").data("id"));
-//            $("#modalEdit input[name=user_password]").val($(this).closest("tr").find("td.user_password").data("password"));
             $("#modalEdit input[name=user_fullname]").val($(this).closest("tr").find("td.user_fullname").data("fullname"));
             $("#modalEdit input[name=user_birthday]").val($(this).closest("tr").find("td.user_birthday").data("birthday"));
             $("#modalEdit input[name=user_gender]").val($(this).closest("tr").find("td.user_gender").data("gender"));
@@ -453,18 +452,6 @@
                     messageBirthday.html("Bạn chưa điền ngày sinh");
                     status = false;
                 }
-//                if (passw !== '') {
-//                    if (patternpass.test(passw) === false)
-//                    {
-//                        messagePassword.html("Mật khẩu phải có 4 ký tự trở lên, có ít nhất một chữ hoa (uppercase), và có ít nhất một chữ thường (lowercase).!");
-//                        status = false;
-//                    } else {
-//                        messagePassword.html("");
-//                    }
-//                } else {
-//                    messagePassword.html("Bạn chưa điền mật khẩu!");
-//                    status = false;
-//                }
                 if(passw === ""){
                     messagePassword.html("Bạn chưa điền mật khẩu!");
                     status = false;
@@ -580,81 +567,81 @@
             var user_address = $("#modalEdit input[name=user_address]").val();
 
 //            //code check lỗi cập nhật nè
-//            function valiUpdate() {
-//                var messageEmailUpdate = $("#email_erorr");
-//                var messageFullnameUpdate = $("#fullname_erorr");
-//                var messageBirthdayUpdate = $("#birth_erorr");
-//                var messagePhoneNumberUpdate = $("#phone_erorr");
-//                var messageAddressUpdate = $("#addr_erorr");
+            function valiUpdate() {
+                var messageEmailUpdate = $("#email_erorr");
+                var messageFullnameUpdate = $("#fullname_erorr");
+                var messageBirthdayUpdate = $("#birth_erorr");
+                var messagePhoneNumberUpdate = $("#phone_erorr");
+                var messageAddressUpdate = $("#addr_erorr");
 //                var messageImageUpdate = $("#user_image");
-//
-//                var ful_name = $("#full_name").val();
-//                var birth_day = $("#birth_day").val();
-//                var phone_nb = $("#phones").val();
-//                var email_ = $("#user_email").val();
+
+                var ful_name = $("#full_name").val();
+                var birth_day = $("#birth_day").val();
+                var phone_nb = $("#phones").val();
+                var email_ = $("#user_email").val();
 //                var img_s = $("#imgup").val();
-//                var add_ress = $("#addres").val();
-//                var filter_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; //định dạng mail
-//                var vnfregex = /((09|03|07|08|05)+([0-9]{8})\b)/g; // định dạng số điện thoại
-//                var pattern_pass = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}/; // định dạng mật khẩu
-//                var current = new Date().getFullYear(); // năm hiện tại
-//                var birthyear = new Date(birth_day).getFullYear(); // lấy năm trong ngày sinh
-//                var status = true;
-//                if (birth_day !== '') {
-//                    if ((current - birthyear) < 18) {
-//                        messageBirthdayUpdate.html("Bạn không được tuyển nhân viên dưới 18 tuổi  !!");
-//                        status = false;
-//                    } else {
-//                        messageBirthdayUpdate.html("");
-//                    }
-//                } else {
-//                    messageBirthdayUpdate.html("Bạn chưa điền ngày sinh");
-//                    status = false;
-//                }
-//                if (ful_name === "") {
-//                    messageFullnameUpdate.html("Bạn chưa điền họ tên");
-//                    status = false;
-//                }
+                var add_ress = $("#addres").val();
+                var filter_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; //định dạng mail
+                var vnfregex = /((09|03|07|08|05)+([0-9]{8})\b)/g; // định dạng số điện thoại
+                var pattern_pass = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}/; // định dạng mật khẩu
+                var current = new Date().getFullYear(); // năm hiện tại
+                var birthyear = new Date(birth_day).getFullYear(); // lấy năm trong ngày sinh
+                var status = true;
+                if (birth_day !== '') {
+                    if ((current - birthyear) < 18) {
+                        messageBirthdayUpdate.html("Bạn không được tuyển nhân viên dưới 18 tuổi  !!");
+                        status = false;
+                    } else {
+                        messageBirthdayUpdate.html("");
+                    }
+                } else {
+                    messageBirthdayUpdate.html("Bạn chưa điền ngày sinh");
+                    status = false;
+                }
+                if (ful_name === "") {
+                    messageFullnameUpdate.html("Bạn chưa điền họ tên");
+                    status = false;
+                }
 //                if (img_s === "") {
 //                    messageImageUpdate.html("Bạn chưa điền hình ảnh");
 //                    status = false;
 //                } else {
 //                    messageImageUpdate.html("");
 //                }
-//                if (add_ress === "") {
-//                    messageAddressUpdate.html("Bạn chưa điền địa chỉ");
-//                    status = false;
-//                } else {
-//                    messageAddressUpdate.html("");
-//                }
-//                if (email_ !== '') {
-//                    if (filter_email.test(email_) === false)
-//                    {
-//                        messageEmailUpdate.html("Hay nhap dia chi email hop le.");
-//                        status = false;
-//                    } else {
-//                        messageEmailUpdate.html("");
-//                    }
-//                } else {
-//                    messageEmailUpdate.html("Bạn chưa điền email!");
-//                    status = false;
-//                }
-//
-//                if (phone_nb !== '') {
-//                    if (vnfregex.test(phone_nb) === false)
-//                    {
-//                        messagePhoneNumberUpdate.html("Số điện thoại của bạn không đúng định dạng!");
-//                        status = false;
-//                    } else {
-//                        messagePhoneNumberUpdate.html("");
-//                    }
-//                } else {
-//                    messagePhoneNumberUpdate.html("Bạn chưa điền số điện thoại!");
-//                    status = false;
-//                }
-//
-//                return status;
-//            };
+                if (add_ress === "") {
+                    messageAddressUpdate.html("Bạn chưa điền địa chỉ");
+                    status = false;
+                } else {
+                    messageAddressUpdate.html("");
+                }
+                if (email_ !== '') {
+                    if (filter_email.test(email_) === false)
+                    {
+                        messageEmailUpdate.html("Hay nhap dia chi email hop le.");
+                        status = false;
+                    } else {
+                        messageEmailUpdate.html("");
+                    }
+                } else {
+                    messageEmailUpdate.html("Bạn chưa điền email!");
+                    status = false;
+                }
+
+                if (phone_nb !== '') {
+                    if (vnfregex.test(phone_nb) === false)
+                    {
+                        messagePhoneNumberUpdate.html("Số điện thoại của bạn không đúng định dạng!");
+                        status = false;
+                    } else {
+                        messagePhoneNumberUpdate.html("");
+                    }
+                } else {
+                    messagePhoneNumberUpdate.html("Bạn chưa điền số điện thoại!");
+                    status = false;
+                }
+
+                return status;
+            };
 
             var formDataUpdate = new FormData();
             formDataUpdate.append('user_id', user_id);
@@ -666,11 +653,11 @@
             formDataUpdate.append('user_address', user_address);
             formDataUpdate.append('user_image', $("#modalEdit input[name=user_image]")[0].files[0]);
             var url = "editstaff?${_csrf.parameterName}=${_csrf.token}";
-            alert(url);
+//            alert(url);
             ///BỎ VALIDATE VÔ UPDATE KHÔNG ĐƯỢC NÈ///
-//            if (valiUpdate() === false) {
-//                return false;
-//            } else {
+            if (valiUpdate() === false) {
+                return false;
+            } else {
             $.ajax({
                 url: url,
                 contentType: false,
@@ -686,7 +673,7 @@
                     console.log(error);
                 }
             });
-//            };           
+            };           
         });
 //DELETE
         $("body").on("click", ".btn_remove", function () {

@@ -8,7 +8,7 @@ function pagination(pageIndex, total_row){
     var html ="";
     var range = 5;
     var maxPage = Math.floor(total_row / range);
-    if(total_row % range !== 0)
+    if(total_row % range != 0)
     {
         maxPage ++;
     }
@@ -28,7 +28,7 @@ function pagination(pageIndex, total_row){
     }
     
     for(i;i<=j;i++){
-        if(i === pageIndex){
+        if(i == pageIndex){
             html += '<li class="page-item active"><a href="javascript:;" class="page-link">'+i+'</a></li>';
         }else{
             html += '<li class="page-item"><a href="javascript:;" class="page-link">'+i+'</a></li>';
@@ -37,5 +37,3 @@ function pagination(pageIndex, total_row){
     
     return html;
 }
-
-
